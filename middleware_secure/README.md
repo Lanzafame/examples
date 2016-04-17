@@ -3,7 +3,7 @@
 The secure package is ported from a third-party.
 
 More can be found here:
-[https://github.com/iris-contrib/secure](https://github.com/iris-contrib/secure)
+[https://github.com/unrolled/secure](https://github.com/unrolled/secure)
 
 ## Description
 
@@ -56,7 +56,7 @@ package main
 
 import (
 	"github.com/kataras/iris"
-	"github.com/iris-contrib/secure"
+	"github.com/kataras/iris/middleware/secure"
 )
 
 func main() {

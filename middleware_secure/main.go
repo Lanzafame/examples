@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/kataras/iris"
-	"github.com/unrolled/secure"
+	"github.com/kataras/iris/middleware/secure"
 )
 
 func main() {
@@ -27,7 +27,7 @@ func main() {
 	})
 
 	iris.UseFunc(func(c *iris.Context) {
-		err := s.Process(c.ResponseWriter, c.Request)
+		err := s.Process(c)
 
 		// If there was an error, do not continue.
 		if err != nil {
