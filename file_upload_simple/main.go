@@ -17,6 +17,12 @@ func main() {
 	// println(s)
 	//
 	iris.Templates("./_examples/file_upload_simple/*")
+	// Maximum request body size.
+	//
+	// The server rejects requests with bodies exceeding this limit.
+	//
+	// By default request body size is unlimited.
+	iris.SetMaxRequestBodySize(32 << 20) //32MB max upload filesize
 
 	// Serve the form.html to the user
 	iris.Get("/upload", func(ctx *iris.Context) {
@@ -32,7 +38,6 @@ func main() {
 
 	// Handle the post request from the form.html to the server
 	iris.Post("/upload", func(ctx *iris.Context) {
-		// TODO: Set maxMemory
 
 		// Get the file from the request
 		info, err := ctx.FormFile("uploadfile")
