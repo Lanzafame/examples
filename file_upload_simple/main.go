@@ -16,7 +16,7 @@ func main() {
 	// s, _ := os.Getwd()
 	// println(s)
 	//
-	iris.Templates("./_examples/file_upload_simple/*")
+	iris.Templates("./*.html")
 	// Maximum request body size.
 	//
 	// The server rejects requests with bodies exceeding this limit.
