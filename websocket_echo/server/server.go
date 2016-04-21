@@ -37,8 +37,7 @@ func echoHTTP(ctx *iris.Context) {
 }
 
 func homeHTTP(ctx *iris.Context) {
-	ctx.Response.Header.Set(iris.ContentType, iris.ContentHTML)
-	homeTemplate.Execute(ctx.Response.BodyWriter(), "ws://"+ctx.HostString()+"/echo")
+	ctx.ExecuteTemplate(homeTemplate, "ws://"+ctx.HostString()+"/echo")
 }
 
 func main() {
