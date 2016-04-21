@@ -1,3 +1,5 @@
+// package main contains an example on how to use the ReadForm, but with the same way you can do the ReadJSON & ReadJSON
+// you may see on other frameworks binders and all that, Iris has simplicity on it's mind, so I think this way is more simple than others.
 package main
 
 import (
