@@ -9,7 +9,9 @@ type page struct {
 }
 
 func main() {
-
+	//optionally
+	iris.TemplateDelims("${", "}")
+	//
 	iris.Templates("./templates/*.html")
 
 	iris.Static("/css", "./resources/css", 1)
