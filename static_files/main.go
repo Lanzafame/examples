@@ -12,7 +12,7 @@ func main() {
 	//optionally
 	iris.TemplateDelims("${", "}")
 	//
-	iris.Templates("./templates/*.html")
+	iris.Templates("./templates/web/default/*.html")
 
 	iris.Static("/css", "./resources/css", 1)
 	iris.Static("/js", "./resources/js", 1)
