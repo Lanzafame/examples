@@ -2,7 +2,7 @@
 
 This folder contains an example of a middleware ported to Iris for a third-party package named pongo2.
 
-More can be found here: 
+More can be found here:
 [https://github.com/flosch/pongo2](https://github.com/flosch/pongo2)
 
 
@@ -93,4 +93,23 @@ func main() {
 }
 
 
+```
+
+## Using Static files with pongo2
+
+
+```go
+//...
+iris.Static("/img", "./public/img", 1)
+iris.Static("/js", "./public/js", 1)
+iris.Static("/css", "./public/css", 1)
+
+iris.Use(pongo2.Pongo2()) //after this
+//...
+```
+
+and on the template file add a style this way:
+
+```html
+<link rel="stylesheet" type="text/css" href="./css/yourstyle.css">
 ```
