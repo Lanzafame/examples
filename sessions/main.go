@@ -22,7 +22,7 @@ func main() {
 		session := sess.Start(c)
 
 		//set session values
-		session.Set("name", "kataras")
+		session.Set("name", "iris")
 
 		//test if setted here
 		c.Write("All ok session setted to: %s", session.Get("name"))
