@@ -12,7 +12,7 @@ import (
 var sess *sessions.Manager
 
 func init() {
-	sess = sessions.New("memory", "irissessionid", time.Duration(time.Minute)*60)
+	sess = sessions.New("memory", "irissessionid", time.Duration(60)*time.Minute)
 }
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
 		c.Write("The name on the /set was: %s", name)
 	})
 
-	iris.Get("/clear", func(c *iris.Context) {
+	iris.Get("/delete", func(c *iris.Context) {
 		//get the session for this context
 		session := sess.Start(c)
 
@@ -51,7 +51,22 @@ func main() {
 
 	})
 
+	iris.Get("/clear", func(c *iris.Context) {
+		//get the session for this context
+		session := sess.Start(c)
+		// removes all entries
+		session.Clear()
+	})
+
+	iris.Get("/destroy", func(c *iris.Context) {
+		//destroy, removes the entire session and cookie
+		sess.Destroy(c)
+	})
+
 	println("Server is listening at :8080")
 	iris.Listen("8080")
 
 }
+
+// session.GetAll() returns all values a map[interface{}]interface{}
+// session.VisitAll(func(key interface{}, value interface{}) { /* loops for each entry */})
