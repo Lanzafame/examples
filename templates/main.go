@@ -24,3 +24,10 @@ func main() {
 	//Get access to loaded (html/template) *template.Template with: iris.Templates().Templates
 	iris.Listen(":8080")
 }
+
+/*
+Want more render features?
+
+Go to: https://github.com/iris-contrib/render
+
+*/
