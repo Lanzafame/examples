@@ -14,7 +14,7 @@ func main() {
 			if authorized {
 				c.Next()
 			} else {
-				c.WriteText(401, c.PathString()+" is not authorized for you")
+				c.Text(401, c.PathString()+" is not authorized for you")
 			}
 
 		})

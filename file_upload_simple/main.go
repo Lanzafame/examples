@@ -12,11 +12,6 @@ import (
 )
 
 func main() {
-	// you can debug path with get working directory
-	// s, _ := os.Getwd()
-	// println(s)
-	//
-	iris.Templates().Load("./*.html")
 	// Maximum request body size.
 	//
 	// The server rejects requests with bodies exceeding this limit.
@@ -33,7 +28,7 @@ func main() {
 		io.WriteString(h, strconv.FormatInt(now, 10))
 		token := fmt.Sprintf("%x", h.Sum(nil))
 		//render the form with the token for any use you like
-		ctx.Render("form.html", token)
+		ctx.Render("form", token)
 	})
 
 	// Handle the post request from the form.html to the server
@@ -59,6 +54,6 @@ func main() {
 	})
 
 	fmt.Println("Iris is listening on :8080")
-	iris.Listen("8080")
+	iris.Listen(":8080")
 
 }

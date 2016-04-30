@@ -26,7 +26,7 @@ func main() {
 		if err != nil {
 			// Do something with the error
 		}
-		c.HTML("<b> Hello </b>" + fullname + "<b> with friends ID </b>" + strconv.Itoa(friendID))
+		c.WriteHTML(iris.StatusOK, "<b> Hello </b>"+fullname+"<b> with friends ID </b>"+strconv.Itoa(friendID))
 	})
 
 	// Listen to port 8080 for example localhost:8080

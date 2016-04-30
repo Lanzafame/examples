@@ -9,13 +9,13 @@ type page struct {
 }
 
 func main() {
-	iris.Templates().Load("./templates/web/default/*.html")
+	iris.Config().Render.Directory = "./templates/web/default"
 
 	iris.Static("/css", "./resources/css", 1)
 	iris.Static("/js", "./resources/js", 1)
 
 	iris.Get("/", func(ctx *iris.Context) {
-		err := ctx.Render("something.html", page{Title: "Home"})
+		err := ctx.Render("something", page{Title: "Home"})
 		if err != nil {
 			println(err.Error())
 		}

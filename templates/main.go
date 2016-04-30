@@ -12,22 +12,17 @@ type mypage struct {
 func main() {
 
 	//optionally - before the load.
-	//iris.Templates().Delims("${", "}") this will change the behavior of {{.Property}} to ${.Property}
-	//iris.Templates().Funcs(...)
+	//iris.Config().Render.Delims = iris.Delims{Left:"${", Right: "}"} this will change the behavior of {{.Property}} to ${.Property}
+	//iris.Config().Render.Funcs = template.FuncMap(...)
 
-	iris.Templates().Load("./tmpl/*.html", "mynamespace")
+	//iris.Config().Render.Directory = "tmpl"
+	iris.Config().Render.Layout = "layout"
 
 	iris.Get("/", func(ctx *iris.Context) {
-		ctx.Render("mypage.html", mypage{"My Page title", "Hello world!"})
+		ctx.Render("mypage", mypage{"My Page title", "Hello world!"}) //, iris.HTMLOptions{"otherLayout"}) <- to override
 	})
 
 	//Get access to loaded (html/template) *template.Template with: iris.Templates().Templates
+	println("Server is running at :8080")
 	iris.Listen(":8080")
 }
-
-/*
-Want more render features?
-
-Go to: https://github.com/iris-contrib/render
-
-*/
