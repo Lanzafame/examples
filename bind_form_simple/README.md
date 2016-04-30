@@ -18,6 +18,7 @@ In my opinion this method is easier than others.
 
 type Visitor struct {
 	Username string
+	VisitDate string `formam: "visit_date"`
 }
 
 func(ctx *iris.Context){

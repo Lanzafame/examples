@@ -55,8 +55,8 @@ func main() {
 	})
 	//
 
-	println("Server is running at :80")
-	iris.Listen(":80")
+	println("Server is running at :8080")
+	iris.Listen(":8080")
 
 }
 

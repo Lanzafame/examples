@@ -16,7 +16,7 @@ func main() {
 	// s, _ := os.Getwd()
 	// println(s)
 	//
-	iris.Templates("./*.html")
+	iris.Templates().Load("./*.html")
 	// Maximum request body size.
 	//
 	// The server rejects requests with bodies exceeding this limit.
@@ -33,7 +33,7 @@ func main() {
 		io.WriteString(h, strconv.FormatInt(now, 10))
 		token := fmt.Sprintf("%x", h.Sum(nil))
 		//render the form with the token for any use you like
-		ctx.RenderFile("form.html", token)
+		ctx.Render("form.html", token)
 	})
 
 	// Handle the post request from the form.html to the server

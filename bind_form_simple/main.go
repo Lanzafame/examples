@@ -30,7 +30,7 @@ func main() {
 	})
 
 	fmt.Println("Server is running at :8080")
-	iris.Listen()
+	iris.Listen(":8080")
 }
 
 var formTemplate = template.Must(template.New("").Parse(`

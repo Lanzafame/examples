@@ -9,21 +9,18 @@ type page struct {
 }
 
 func main() {
-	//optionally
-	iris.TemplateDelims("${", "}")
-	//
-	iris.Templates("./templates/web/default/*.html")
+	iris.Templates().Load("./templates/web/default/*.html")
 
 	iris.Static("/css", "./resources/css", 1)
 	iris.Static("/js", "./resources/js", 1)
 
-	iris.Get("/", func(c *iris.Context) {
-		err := c.RenderFile("something.html", page{Title: "Home"})
+	iris.Get("/", func(ctx *iris.Context) {
+		err := ctx.Render("something.html", page{Title: "Home"})
 		if err != nil {
 			println(err.Error())
 		}
 	})
 
 	println("Server is running at :8080")
-	iris.Listen()
+	iris.Listen(":8080")
 }
