@@ -22,7 +22,6 @@ func main() {
 		ctx.Render("mypage", mypage{"My Page title", "Hello world!"}) //, iris.HTMLOptions{"otherLayout"}) <- to override
 	})
 
-	//Get access to loaded (html/template) *template.Template with: iris.Templates().Templates
 	println("Server is running at :8080")
 	iris.Listen(":8080")
 }
