@@ -3,8 +3,8 @@ package main
 import (
 	"time"
 
-	"github.com/iris-contrib/graceful"
 	"github.com/kataras/iris"
+	"github.com/kataras/iris/graceful"
 )
 
 func main() {
