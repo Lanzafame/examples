@@ -15,9 +15,10 @@ func main() {
 	//iris.Config().Render.Delims = iris.Delims{Left:"${", Right: "}"} this will change the behavior of {{.Property}} to ${.Property}
 	//iris.Config().Render.Funcs = template.FuncMap(...)
 
-	//iris.Config().Render.Directory = "tmpl"
-	iris.Config().Render.Layout = "layout"
+	//iris.Config().Render.Directory = "templates"
 
+	iris.Config().Render.Layout = "layout" // Default is ""
+	iris.Config().Render.Gzip = true       // Default is false
 	iris.Get("/", func(ctx *iris.Context) {
 		ctx.Render("mypage", mypage{"My Page title", "Hello world!"}) //, iris.HTMLOptions{"otherLayout"}) <- to override
 	})
