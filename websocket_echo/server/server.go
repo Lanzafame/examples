@@ -46,7 +46,7 @@ func main() {
 	iris.Any("/echo", echoHTTP)
 	iris.Get("/", homeHTTP)
 	println("Server is running at " + *addr)
-	log.Fatal(iris.Listen(*addr))
+	iris.Listen(*addr)
 }
 
 var homeTemplate = template.Must(template.New("").Parse(`
