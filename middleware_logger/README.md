@@ -1,5 +1,5 @@
 ## Example of the Middleware Logger
-Click [here](https://github.com/kataras/iris/tree/development/middleware/logger) for more details
+Click [here](https://github.com/kataras/iris/tree/master/middleware/logger) for more details
 
 ## How to use
 

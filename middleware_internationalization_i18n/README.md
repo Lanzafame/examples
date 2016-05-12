@@ -1,7 +1,7 @@
 ## Example information
 
 This folder contains an example on how to use the iris middleware for i18n package,
-click [here](https://github.com/kataras/iris/tree/development/middleware/i18n) for more.
+click [here](https://github.com/kataras/iris/tree/master/middleware/i18n) for more.
 
 
 
