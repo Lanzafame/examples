@@ -12,6 +12,7 @@ import (
 type Visitor struct {
 	Username string
 	Mail     string
+	Data     []string `formam:"mydata"`
 }
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	})
 
 	iris.Post("/form_action", func(ctx *iris.Context) {
-		visitor := &Visitor{}
+		visitor := &Visitor{Data: make([]string, 0)}
 		err := ctx.ReadForm(visitor)
 		if err != nil {
 			fmt.Println("Error when reading from form: " + err.Error())
@@ -42,7 +43,13 @@ var formTemplate = template.Must(template.New("").Parse(`
 <form action="/form_action" method="post">
 <input type="text" name="Username" />
 <br/>
-<input type="text" name="Mail" />
+<input type="text" name="Mail" /><br/>
+<select multiple="multiple" name="mydata">
+<option value='one'>One</option>
+<option value='two'>Two</option>
+<option value='three'>Three</option>
+<option value='four'>Four</option>
+</select>
 <hr/>
 <input type="submit" value="Send data" />
 
