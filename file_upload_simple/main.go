@@ -28,7 +28,7 @@ func main() {
 		io.WriteString(h, strconv.FormatInt(now, 10))
 		token := fmt.Sprintf("%x", h.Sum(nil))
 		//render the form with the token for any use you like
-		ctx.Render("form", token)
+		ctx.Render("form.html", token)
 	})
 
 	// Handle the post request from the form.html to the server

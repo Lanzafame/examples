@@ -5,13 +5,13 @@ import (
 )
 
 func main() {
-	iris.Config().Render.Layout = "layouts/layout"
-
+	iris.Config().Templates.Layout = "layouts/layout.html"
 	iris.Get("/", func(ctx *iris.Context) {
-		if err := ctx.Render("page1", nil); err != nil {
+		if err := ctx.Render("page1.html", nil); err != nil {
 			panic(err)
 		}
 	})
 
-	iris.Listen(":80")
+	println("Server is running at: 8080")
+	iris.Listen(":8080")
 }
