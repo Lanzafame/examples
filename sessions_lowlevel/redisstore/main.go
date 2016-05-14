@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/kataras/iris"
+	"github.com/kataras/iris/config"
 	"github.com/kataras/iris/sessions"
 
 	_ "github.com/kataras/iris/sessions/providers/redis" // add a store it is auto-registers itself
@@ -14,8 +15,14 @@ import (
 var sess *sessions.Manager
 
 func init() {
+	sessConfig := config.Sessions{
+		Provider:   "redis", // if you set it to ""  means that sessions are disabled.
+		Cookie:     "yoursessionCOOKIEID",
+		Expires:    config.CookieExpireNever,
+		GcDuration: time.Duration(2) * time.Hour,
+	}
+	sess = sessions.New(sessConfig)
 
-	sess = sessions.New("redis", "irissessionid", time.Duration(5)*time.Minute)
 }
 
 func main() {

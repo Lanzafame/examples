@@ -5,7 +5,8 @@ import (
 )
 
 func main() {
-	iris.Config().Templates.Layout = "layouts/layout.html"
+
+	iris.Config().Render.Template.Layout = "layouts/layout.html"
 	iris.Get("/", func(ctx *iris.Context) {
 		if err := ctx.Render("page1.html", nil); err != nil {
 			panic(err)

@@ -4,6 +4,7 @@ import (
 	"github.com/kataras/iris"
 )
 
+// default memory provider
 func main() {
 
 	iris.Get("/set", func(c *iris.Context) {

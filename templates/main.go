@@ -12,14 +12,14 @@ type mypage struct {
 func main() {
 
 	//optionally - before the load.
-	//iris.Config().Templates.Standar.Left = "${"  // Default is "{{"
-	//iris.Config().Templates.Standar.Right = "}" // Default is "}}"
-	//iris.Config().Templates.Standar.Funcs = template.FuncMap(...)
+	//iris.Config().Render.Template.Standar.Left = "${"  // Default is "{{"
+	//iris.Config().Render.Template.Standar.Right = "}" // Default is "}}"
+	//iris.Config().Render.Template.Standar.Funcs = template.FuncMap(...)
 
-	//iris.Config().Templates.Directory = "templates" // Default is "templates"
-	iris.Config().Templates.IsDevelopment = true // rebuild the templates on each refresh. Default is false
-	//iris.Config().Templates.Layout = "layout.html" // means: ./templates/layout.html.  Default is ""
-	iris.Config().Templates.Gzip = true // Default is false
+	//iris.Config().Render.Template.Directory = "templates" // Default is "templates"
+	iris.Config().Render.Template.IsDevelopment = true // rebuild the templates on each refresh. Default is false
+	//api.Config().Render.Template.Layout = "layout.html" // means: ./templates/layout.html.  Default is ""
+	iris.Config().Render.Template.Gzip = true // Default is false
 
 	iris.Get("/", func(ctx *iris.Context) {
 		ctx.Render("mypage.html", mypage{"My Page title", "Hello world!"}) //, "otherLayout" <- to override the layout

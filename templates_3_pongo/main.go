@@ -2,11 +2,12 @@ package main
 
 import (
 	"github.com/kataras/iris"
+	"github.com/kataras/iris/config"
 )
 
 func main() {
 
-	iris.Config().Templates.Engine = iris.PongoEngine
+	iris.Config().Render.Template.Engine = config.PongoEngine
 
 	iris.Get("/", func(ctx *iris.Context) {
 

@@ -9,7 +9,7 @@ type page struct {
 }
 
 func main() {
-	iris.Config().Templates.Directory = "./templates/web/default"
+	iris.Config().Render.Template.Directory = "./templates/web/default"
 
 	iris.Static("/css", "./resources/css", 1)
 	iris.Static("/js", "./resources/js", 1)
