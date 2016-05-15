@@ -4,7 +4,8 @@ package main
 
 import (
 	"fmt"
-	"html/template"
+
+	"github.com/flosch/pongo2"
 
 	"github.com/kataras/iris"
 )
@@ -12,20 +13,21 @@ import (
 type Visitor struct {
 	Username string
 	Mail     string
-	Data     []string `formam:"mydata"`
+	Data     []string `form:"mydata"`
 }
 
 func main() {
 
 	iris.Get("/", func(ctx *iris.Context) {
-		ctx.ExecuteTemplate(formTemplate, "")
+		ctx.SetContentType("text/html ;charset=UTF-8")
+		formTemplate.ExecuteWriter(nil, ctx.Response.BodyWriter())
 	})
 
 	iris.Post("/form_action", func(ctx *iris.Context) {
-		visitor := &Visitor{Data: make([]string, 0)}
+		visitor := &Visitor{}
 		err := ctx.ReadForm(visitor)
 		if err != nil {
-			fmt.Println("Error when reading from form: " + err.Error())
+			fmt.Println("Error when reading form: " + err.Error())
 		}
 		fmt.Printf("\n Visitor: %v", visitor)
 	})
@@ -34,7 +36,7 @@ func main() {
 	iris.Listen(":8080")
 }
 
-var formTemplate = template.Must(template.New("").Parse(`
+var formTemplate, err = pongo2.FromString(`
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
@@ -56,4 +58,4 @@ var formTemplate = template.Must(template.New("").Parse(`
 </form>
 </body>
 </html>
-`))
+`)
