@@ -12,9 +12,9 @@ type mypage struct {
 func main() {
 
 	//optionally - before the load.
-	//iris.Config().Render.Template.Standar.Left = "${"  // Default is "{{"
-	//iris.Config().Render.Template.Standar.Right = "}" // Default is "}}"
-	//iris.Config().Render.Template.Standar.Funcs = template.FuncMap(...)
+	//iris.Config().Render.Template.HTMLTemplate.Left = "${"  // Default is "{{"
+	//iris.Config().Render.Template.HTMLTemplate.Right = "}" // Default is "}}"
+	//iris.Config().Render.Template.HTMLTemplate.Funcs = template.FuncMap(...)
 
 	//iris.Config().Render.Template.Directory = "templates" // Default is "templates"
 	iris.Config().Render.Template.IsDevelopment = true // rebuild the templates on each refresh. Default is false
