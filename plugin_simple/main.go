@@ -15,7 +15,7 @@ func main() {
 
 	})
 
-	// third way:
+	// second way:
 	// structured way for more things
 	plugin := myPlugin{}
 	iris.Plugins().Add(plugin)
