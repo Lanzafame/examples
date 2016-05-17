@@ -9,8 +9,11 @@ type page struct {
 }
 
 func main() {
-	iris.Config().Render.Template.Directory = "./templates/web/default"
+	iris.Config().Render.Template.Directory = "templates\\web\\default"
 
+	iris.OnError(iris.StatusForbidden, func(ctx *iris.Context) {
+		ctx.WriteHTML(iris.StatusForbidden, "<h1> You are not allowed here </h1>")
+	})
 	iris.Static("/css", "./resources/css", 1)
 	iris.Static("/js", "./resources/js", 1)
 
