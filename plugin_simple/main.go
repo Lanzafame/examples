@@ -9,12 +9,13 @@ import (
 func main() {
 	// first way:
 	// simple way for simple things
-	// PostHandle after a route is registed ( iris.Get/Post...)
-	iris.Plugins().Add(iris.PostHandleFunc(func(route iris.IRoute) {
-		fmt.Printf("Func: Route Method: %s and Path: %s registed with %d handler(s). \n", route.GetMethod(), route.GetPath(), len(route.GetMiddleware()))
-	}))
+	// PreHandle before a route is registed ( iris.Get/Post...)
+	iris.Plugins().PreHandle(func(route iris.IRoute) {
+		fmt.Printf("Func: Route Method: %s and Path: %s is going to be registed with %d handler(s). \n", route.GetMethod(), route.GetPath(), len(route.GetMiddleware()))
 
-	// second way:
+	})
+
+	// third way:
 	// structured way for more things
 	plugin := myPlugin{}
 	iris.Plugins().Add(plugin)
@@ -37,9 +38,9 @@ func aHandler(ctx *iris.Context) {
 
 type myPlugin struct{}
 
-// PreHandle before a route is registed ( iris.Get/Post...)
-func (pl myPlugin) PreHandle(route iris.IRoute) {
-	fmt.Printf("myPlugin: Route Method: %s and Path: %s is going to be registed with %d handler(s). \n", route.GetMethod(), route.GetPath(), len(route.GetMiddleware()))
+// PostHandle after a route is registed ( iris.Get/Post...)
+func (pl myPlugin) PostHandle(route iris.IRoute) {
+	fmt.Printf("myPlugin: Route Method: %s and Path: %s registed with %d handler(s). \n", route.GetMethod(), route.GetPath(), len(route.GetMiddleware()))
 }
 
 // after iris.Listen
