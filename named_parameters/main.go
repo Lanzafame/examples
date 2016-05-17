@@ -29,6 +29,20 @@ func main() {
 		c.WriteHTML(iris.StatusOK, "<b> Hello </b>"+fullname+"<b> with friends ID </b>"+strconv.Itoa(friendID))
 	})
 
-	// Listen to port 8080 for example localhost:8080
-	iris.Listen("8080")
+	/* Example: /posts/:id and /posts/new (dynamic value conficts with the static 'new') for performance reasons and simplicity
+	   but if you need to have them you can do that: */
+
+	iris.Get("/posts/*action", func(ctx *iris.Context) {
+		action := ctx.Param("action")
+		if action == "new" {
+			// it's posts/new page
+		} else {
+			// it's posts/:id page
+			//doSomething with the action which is the id
+		}
+	})
+
+	// Listen to port 8080 for example localhost:8080 or just :8080
+	println("Server is listening to :8080")
+	iris.Listen(":8080")
 }
