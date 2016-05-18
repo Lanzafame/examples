@@ -6,7 +6,6 @@ import (
 
 func main() {
 	iris.Config().Render.Template.Layout = "layouts/layout.html" // default ""
-	iris.Config().Render.Template.Minify = true                  // default true already
 	iris.Get("/", func(ctx *iris.Context) {
 		if str, err := ctx.RenderString("page1.html", nil); err != nil {
 			panic(err)
