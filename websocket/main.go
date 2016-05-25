@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/ws"
+	"github.com/kataras/iris/websocket"
 )
 
 type clientPage struct {
@@ -23,12 +23,12 @@ func main() {
 
 	// important staff
 
-	w := ws.New(api, "/my_endpoint")
-	// for default 'iris.' station use that: w := ws.New(iris.DefaultIris, "/my_endpoint")
+	w := websocket.New(api, "/my_endpoint")
+	// for default 'iris.' station use that: w := websocket.New(iris.DefaultIris, "/my_endpoint")
 
-	w.OnConnection(func(c ws.Connection) {
+	w.OnConnection(func(c websocket.Connection) {
 		c.On("chat", func(message string) {
-			c.To(ws.Broadcast).Emit("chat", "Message from: "+c.ID()+"-> "+message) // to all except this connection
+			c.To(websocket.Broadcast).Emit("chat", "Message from: "+c.ID()+"-> "+message) // to all except this connection
 			c.Emit("chat", "Message from myself: "+message)
 		})
 	})
