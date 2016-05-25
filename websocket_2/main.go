@@ -13,31 +13,28 @@ type clientPage struct {
 }
 
 func main() {
-	w := ws.New()
-	chat(w)
-	iris.Static("/js", "./static/js", 1)
+	api := iris.New()
 
-	iris.Get("/", func(ctx *iris.Context) {
+	api.Static("/js", "./static/js", 1)
+
+	api.Get("/", func(ctx *iris.Context) {
 		ctx.Render("client.html", clientPage{"Client Page", ctx.HostString()})
 	})
 
-	iris.Get("/ws", func(ctx *iris.Context) {
-		if err := w.Upgrade(ctx); err != nil {
-			iris.Logger().Panic(err)
-		}
-	})
+	// important staff
 
-	fmt.Println("Server is listening at: 8080")
-	iris.Listen(":8080")
-}
-
-func chat(w ws.Server) {
+	w := ws.New(api, "/my_endpoint")
+	// for default 'iris.' station use that: w := ws.New(iris.DefaultIris, "/my_endpoint")
 
 	w.OnConnection(func(c ws.Connection) {
 		c.On("chat", func(message string) {
-			c.To(ws.Broadcast).Emit("chat", "Native websocket message from: "+c.ID()+"-> "+message) // to all except this connection //worked
-			c.Emit("chat", "to my self: "+message)
+			c.To(ws.Broadcast).Emit("chat", "Message from: "+c.ID()+"-> "+message) // to all except this connection
+			c.Emit("chat", "Message from myself: "+message)
 		})
 	})
 
+	//
+
+	fmt.Println("Server is listening at: 8080")
+	api.Listen(":8080")
 }
