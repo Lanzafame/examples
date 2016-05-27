@@ -22,6 +22,8 @@ func main() {
 
 	// the path which the websocket client should listen/registed to ->
 	iris.Config().Websocket.Endpoint = "/my_endpoint"
+	// for Allow origin you can make use of the middleware
+	//iris.Config().Websocket.Headers["Access-Control-Allow-Origin"] = "*"
 
 	ws := iris.Websocket() // get the websocket server
 

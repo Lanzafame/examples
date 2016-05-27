@@ -21,7 +21,6 @@ $(function () {
 	});
 
 	$("#sendBtn").click(function () {
-		//w.EmitMessage(messageTxt.val());
 		w.Emit("chat", messageTxt.val().toString());
 		messageTxt.val("");
 	});
