@@ -7,22 +7,22 @@ $(function () {
 	messages = $("#messages");
 
 
-	w = new Ws("ws://" + HOST + "/my_endpoint");
-	w.OnConnect(function () {
+	w = new WebSocket("ws://" + HOST + "/my_endpoint");
+	w.onopen = function () {
 		console.log("Websocket connection enstablished");
-	});
+	};
 
-	w.OnDisconnect(function () {
+	w.onclose = function () {
 		appendMessage($("<div><center><h3>Disconnected</h3></center></div>"));
-	});
+	};
+	w.onmessage = function(message){
+		appendMessage($("<div>" + message.data + "</div>"));
+	};
 
-	w.On("chat", function (message) {
-		appendMessage($("<div>" + message + "</div>"));
-	});
 
 	$("#sendBtn").click(function () {
 		//w.EmitMessage(messageTxt.val());
-		w.Emit("chat", messageTxt.val().toString());
+		w.send(messageTxt.val().toString());
 		messageTxt.val("");
 	});
 

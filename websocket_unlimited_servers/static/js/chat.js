@@ -18,21 +18,21 @@ $(function () {
 
 	w.On("chat", function (message) {
 		appendMessage($("<div>" + message + "</div>"));
-	})
+	});
 
 	$("#sendBtn").click(function () {
 		//w.EmitMessage(messageTxt.val());
 		w.Emit("chat", messageTxt.val().toString());
 		messageTxt.val("");
-	})
+	});
 
 })
 
 
 function appendMessage(messageDiv) {
-    var theDiv = messages[0]
+    var theDiv = messages[0];
     var doScroll = theDiv.scrollTop == theDiv.scrollHeight - theDiv.clientHeight;
-    messageDiv.appendTo(messages)
+    messageDiv.appendTo(messages);
     if (doScroll) {
         theDiv.scrollTop = theDiv.scrollHeight - theDiv.clientHeight;
     }
