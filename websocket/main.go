@@ -13,7 +13,6 @@ type clientPage struct {
 }
 
 func main() {
-
 	iris.Static("/js", "./static/js", 1)
 
 	iris.Get("/", func(ctx *iris.Context) {
