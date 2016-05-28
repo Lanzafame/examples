@@ -29,6 +29,5 @@ func main() {
 		c.Write("HEY FROM no-subdomain hey")
 	})
 
-	println("Server is listening at: 80")
 	api.Listen(":80")
 }

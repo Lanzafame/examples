@@ -48,6 +48,5 @@ func main() {
 
 	//
 
-	fmt.Println("Server is listening at: 8080")
 	api.Listen(":8080")
 }

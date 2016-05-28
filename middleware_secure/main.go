@@ -41,7 +41,6 @@ func main() {
 		c.Write("Hello from /home ?")
 	})
 
-	println("Iris is listening on :8080")
 	iris.Listen(":8080")
 
 }

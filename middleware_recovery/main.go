@@ -22,6 +22,6 @@ func main() {
 	}, func(ctx *iris.Context) {
 		ctx.Write("something here at the end")
 	})
-	println("Iris is listening on :8080")
+
 	iris.Listen(":8080")
 }

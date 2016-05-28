@@ -34,7 +34,6 @@ func main() {
 
 	//for subdomains look at the: _examples/subdomains_simple/main.go
 
-	println("Server is listening at :8080")
 	iris.Listen("8080")
 
 }

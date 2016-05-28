@@ -35,6 +35,5 @@ func main() {
 	iris.Handle("GET", "/", &MyHandler{myData})
 	iris.Handle("GET", "/about", &MyHandler{myData})
 
-	println("Server is running at :8080")
 	iris.Listen(":8080")
 }

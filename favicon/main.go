@@ -17,6 +17,5 @@ func main() {
 		ctx.WriteHTML(iris.StatusOK, "You should see the favicon now at the side of your browser, if not please refresh or clear the browser's cache.")
 	})
 
-	println("Server is running at: 8080")
 	iris.Listen(":8080")
 }

@@ -2,14 +2,14 @@ package main
 
 import (
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/config"
 )
 
 func main() {
+	api := iris.New()
 
-	iris.Config().Render.Template.Engine = config.PongoEngine
+	api.Config().Render.Template.Engine = iris.PongoEngine
 
-	iris.Get("/", func(ctx *iris.Context) {
+	api.Get("/", func(ctx *iris.Context) {
 
 		err := ctx.Render("index.html", map[string]interface{}{"username": "iris", "is_admin": true})
 		// OR
@@ -20,6 +20,5 @@ func main() {
 		}
 	})
 
-	println("Server is running at :8080")
-	iris.Listen(":8080")
+	api.ListenWithErr(":8080")
 }

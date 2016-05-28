@@ -11,6 +11,7 @@ func main() {
 		Users:      map[string]string{"myusername": "mypassword", "mySecondusername": "mySecondpassword"},
 		Realm:      "Authorization Required", // if you don't set it it's "Authorization Required"
 		ContextKey: "user",                   // if you don't set it it's "auth"
+		//Expires:   time.Time,
 	}
 
 	authentication := basicauth.New(authConfig)
@@ -44,6 +45,5 @@ func main() {
 		})
 	}
 
-	println("Server is running at: 8080")
 	iris.Listen(":8080")
 }

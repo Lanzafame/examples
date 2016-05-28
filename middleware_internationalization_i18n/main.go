@@ -22,7 +22,6 @@ func main() {
 		ctx.Write("From the language %s translated output: %s", language, hi)
 	})
 
-	println("Server is running at :8080")
 	iris.Listen(":8080")
 
 }

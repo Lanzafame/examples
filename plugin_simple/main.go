@@ -28,7 +28,6 @@ func main() {
 
 	iris.Get("/fourth_route", aHandler)
 
-	fmt.Println("Server is running at: 8080")
 	iris.Listen(":8080")
 }
 

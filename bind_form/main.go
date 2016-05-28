@@ -28,6 +28,5 @@ func main() {
 		fmt.Printf("\n Visitor: %v", visitor)
 	})
 
-	fmt.Println("Server is running at :8080")
 	iris.Listen(":8080")
 }

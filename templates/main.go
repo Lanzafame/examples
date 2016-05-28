@@ -25,6 +25,12 @@ func main() {
 		ctx.Render("mypage.html", mypage{"My Page title", "Hello world!"}) //, "otherLayout" <- to override the layout
 	})
 
-	println("Server is running at :8080")
+	iris.Get("/hi_json", func(c *iris.Context) {
+		c.JSON(200, iris.Map{
+			"Name": "Iris",
+			"Age":  2,
+		})
+	})
+
 	iris.Listen(":8080")
 }

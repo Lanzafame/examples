@@ -17,6 +17,5 @@ func main() {
 		ctx.Write("Hello authenticated user: %s ", username)
 	})
 
-	println("Server is running at: 8080")
 	iris.Listen(":8080")
 }

@@ -12,14 +12,13 @@ func main() {
 	iris.UseFunc(responseLogger) // global middleware, catch all routes
 
 	iris.Get("/", func(c *iris.Context) {
-		c.WriteHTML(iris.StatusOK, "Hello from /</h1>")
+		c.WriteHTML(iris.StatusOK, "<h1> Hello from / </h1>")
 	})
 
 	iris.Get("/home", func(c *iris.Context) {
-		c.WriteHTML(iris.StatusOK, "<h1>Hello from /home</h1>")
+		c.WriteHTML(iris.StatusOK, "<h1> Hello from /home s</h1>")
 	})
 
-	fmt.Println("Server is running at: 8080")
 	iris.Listen(":8080")
 }
 

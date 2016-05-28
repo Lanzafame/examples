@@ -48,7 +48,6 @@ func main() {
 	})
 	//
 
-	println("Server is running at :80")
 	iris.Listen(":80")
 
 }

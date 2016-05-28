@@ -28,7 +28,6 @@ func main() {
 		ctx.EmitError(iris.StatusNotFound) // ctx.NotFound()
 	})
 
-	println("Server is running at: 80")
 	iris.Listen(":80")
 
 }
