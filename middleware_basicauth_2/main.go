@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/config"
 	"github.com/kataras/iris/middleware/basicauth"
@@ -11,7 +13,7 @@ func main() {
 		Users:      map[string]string{"myusername": "mypassword", "mySecondusername": "mySecondpassword"},
 		Realm:      "Authorization Required", // if you don't set it it's "Authorization Required"
 		ContextKey: "user",                   // if you don't set it it's "auth"
-		//Expires:   time.Time,
+		Expires:    time.Duration(30) * time.Minute,
 	}
 
 	authentication := basicauth.New(authConfig)
